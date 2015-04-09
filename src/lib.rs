@@ -35,7 +35,7 @@ extern "C" {
   pub fn OSMesaGetCurrentContext () -> OSMesaContext;
   pub fn OSMesaGetDepthBuffer (c: OSMesaContext, width: *mut GLint, height: *mut GLint, bytesPerValue: *mut GLint, buffer: *mut *mut c_void) -> GLboolean;
   pub fn OSMesaGetIntegerv (pname: GLint, value: *mut GLint);
-  pub fn OSMesaGetProcAddress (funcName: *const c_char);
+  pub fn OSMesaGetProcAddress (funcName: *const c_char) -> OSMESAproc;
   pub fn OSMesaMakeCurrent (ctx: OSMesaContext, buffer: *mut c_void, _type: GLenum, width: GLsizei, height: GLsizei) -> GLboolean;
   pub fn OSMesaPixelStore (pname: GLint, value: GLint);
 }
