@@ -81,7 +81,6 @@ fn configure_build<S: AsRef<str>> (link_paths: &[PathBuf], libs: &[S]) {
 }
 
 fn main () {
-  println!("DAFUQ");
   match pkg_config::find_library(PACKAGE) {
     Ok(l) => { configure_build(&l.link_paths[..], &l.libs[..]); },
     Err(_) => { configure_build(&[], &GUESS_LIBS[..]); },
