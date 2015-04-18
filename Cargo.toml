@@ -1,18 +1,11 @@
 [package]
 name = "osmesa-sys"
-version = "0.0.2"
+version = "0.0.3"
 authors = ["Daggerbot <daggerbot@gmail.com>"]
 description = "OSMesa library bindings for Rust"
 license = "CC0-1.0"
 repository = "https://github.com/Daggerbot/osmesa-rs.git"
 build = "src/build.rs"
-
-[lib]
-name = "osmesa_sys"
-path = "src/lib.rs"
-
-[features]
-force-link = []
 
 [dependencies]
 gl = "*"
