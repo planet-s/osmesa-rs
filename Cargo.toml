@@ -19,5 +19,4 @@ gl = "*"
 libc = "*"
 
 [build-dependencies]
-log = "*"
 pkg-config = "*"

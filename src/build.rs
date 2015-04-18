@@ -4,8 +4,6 @@
 
 #![allow(unused_imports)]
 
-#[macro_use]
-extern crate log;
 extern crate pkg_config;
 
 use std::fs::File;
