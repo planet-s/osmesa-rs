@@ -8,15 +8,13 @@
 
 #[macro_use]
 extern crate shared_library;
-extern crate gl;
 extern crate libc;
 
-use gl::types::{
-  GLboolean,
-  GLenum,
-  GLint,
-  GLsizei,
-};
+type GLboolean = libc::c_uchar;
+type GLenum = libc::c_uint;
+type GLint = libc::c_int;
+type GLsizei = libc::c_int;
+
 use libc::{
   c_char,
   c_void,
