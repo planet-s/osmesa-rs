@@ -2,9 +2,12 @@
 // The OSMesa library is available under the MIT license.
 // These bindings are public domain.
 
+#![allow(non_snake_case)]
 #![crate_name="osmesa_sys"]
 #![crate_type="lib"]
 
+#[macro_use]
+extern crate shared_library;
 extern crate gl;
 extern crate libc;
 
@@ -25,19 +28,19 @@ use libc::{
 //
 
 
-extern "C" {
-  pub fn OSMesaColorClamp (enable: GLboolean);
-  pub fn OSMesaCreateContext (format: GLenum, sharelist: OSMesaContext) -> OSMesaContext;
-  pub fn OSMesaCreateContextExt (format: GLenum, depthBits: GLint, stencilBits: GLint, accumBits: GLint, sharelist: OSMesaContext) -> OSMesaContext;
-  pub fn OSMesaDestroyContext (ctx: OSMesaContext);
-  pub fn OSMesaGetColorBuffer (c: OSMesaContext, width: *mut GLint, height: *mut GLint, format: *mut GLint, buffer: *mut *mut c_void) -> GLboolean;
-  pub fn OSMesaGetCurrentContext () -> OSMesaContext;
-  pub fn OSMesaGetDepthBuffer (c: OSMesaContext, width: *mut GLint, height: *mut GLint, bytesPerValue: *mut GLint, buffer: *mut *mut c_void) -> GLboolean;
-  pub fn OSMesaGetIntegerv (pname: GLint, value: *mut GLint);
-  pub fn OSMesaGetProcAddress (funcName: *const c_char) -> OSMESAproc;
-  pub fn OSMesaMakeCurrent (ctx: OSMesaContext, buffer: *mut c_void, _type: GLenum, width: GLsizei, height: GLsizei) -> GLboolean;
-  pub fn OSMesaPixelStore (pname: GLint, value: GLint);
-}
+shared_library!(OsMesa, "libOSMesa.so",
+  pub fn OSMesaColorClamp (enable: GLboolean),
+  pub fn OSMesaCreateContext (format: GLenum, sharelist: OSMesaContext) -> OSMesaContext,
+  pub fn OSMesaCreateContextExt (format: GLenum, depthBits: GLint, stencilBits: GLint, accumBits: GLint, sharelist: OSMesaContext) -> OSMesaContext,
+  pub fn OSMesaDestroyContext (ctx: OSMesaContext),
+  pub fn OSMesaGetColorBuffer (c: OSMesaContext, width: *mut GLint, height: *mut GLint, format: *mut GLint, buffer: *mut *mut c_void) -> GLboolean,
+  pub fn OSMesaGetCurrentContext () -> OSMesaContext,
+  pub fn OSMesaGetDepthBuffer (c: OSMesaContext, width: *mut GLint, height: *mut GLint, bytesPerValue: *mut GLint, buffer: *mut *mut c_void) -> GLboolean,
+  pub fn OSMesaGetIntegerv (pname: GLint, value: *mut GLint),
+  pub fn OSMesaGetProcAddress (funcName: *const c_char) -> OSMESAproc,
+  pub fn OSMesaMakeCurrent (ctx: OSMesaContext, buffer: *mut c_void, _type: GLenum, width: GLsizei, height: GLsizei) -> GLboolean,
+  pub fn OSMesaPixelStore (pname: GLint, value: GLint),
+);
 
 
 //
