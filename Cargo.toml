@@ -7,6 +7,5 @@ license = "CC0-1.0"
 repository = "https://github.com/Daggerbot/osmesa-rs.git"
 
 [dependencies]
-gl = "*"
 libc = "*"
 shared_library = "0.1"
