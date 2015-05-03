@@ -5,11 +5,8 @@ authors = ["Daggerbot <daggerbot@gmail.com>"]
 description = "OSMesa library bindings for Rust"
 license = "CC0-1.0"
 repository = "https://github.com/Daggerbot/osmesa-rs.git"
-build = "src/build.rs"
 
 [dependencies]
 gl = "*"
 libc = "*"
-
-[build-dependencies]
-pkg-config = "*"
+shared_library = "0.1"
