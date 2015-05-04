@@ -1,6 +1,6 @@
 [package]
 name = "osmesa-sys"
-version = "0.0.4"
+version = "0.0.5"
 authors = ["Daggerbot <daggerbot@gmail.com>"]
 description = "OSMesa library bindings for Rust"
 license = "CC0-1.0"
