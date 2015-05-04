@@ -10,15 +10,15 @@
 extern crate shared_library;
 extern crate libc;
 
-type GLboolean = libc::c_uchar;
-type GLenum = libc::c_uint;
-type GLint = libc::c_int;
-type GLsizei = libc::c_int;
-
 use libc::{
   c_char,
   c_void,
 };
+
+pub type GLboolean = libc::c_uchar;
+pub type GLenum = libc::c_uint;
+pub type GLint = libc::c_int;
+pub type GLsizei = libc::c_int;
 
 
 //
@@ -60,13 +60,13 @@ pub type OSMESAproc = Option<unsafe extern "C" fn ()>;
 
 
 // context formats
-pub const OSMESA_COLOR_INDEX: GLenum = 0x1900; // gl::COLOR_INDEX seems to be missing
-pub const OSMESA_RGBA: GLenum = gl::RGBA;
 pub const OSMESA_BGRA: GLenum = 0x0001;
 pub const OSMESA_ARGB: GLenum = 0x0002;
-pub const OSMESA_RGB: GLenum = gl::RGB;
 pub const OSMESA_BGR: GLenum = 0x0004;
 pub const OSMESA_RGB_565: GLenum = 0x0005;
+pub const OSMESA_COLOR_INDEX: GLenum = 0x1900;
+pub const OSMESA_RGB: GLenum = 0x1907;
+pub const OSMESA_RGBA: GLenum = 0x1908;
 
 // OSMesaGetIntegerv
 pub const OSMESA_WIDTH: GLint = 0x0020;
