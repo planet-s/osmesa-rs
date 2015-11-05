@@ -3,14 +3,11 @@
 // These bindings are public domain.
 
 #![allow(non_snake_case)]
-#![crate_name="osmesa_sys"]
-#![crate_type="lib"]
 
 #[macro_use]
 extern crate shared_library;
-extern crate libc;
 
-use libc::{
+use std::os::raw::{
   c_char,
   c_int,
   c_uchar,
