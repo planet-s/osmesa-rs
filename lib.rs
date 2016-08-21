@@ -25,6 +25,7 @@ shared_library!(OsMesa, "libOSMesa.so",
   pub fn OSMesaColorClamp (enable: c_uchar),
   pub fn OSMesaCreateContext (format: c_uint, sharelist: OSMesaContext) -> OSMesaContext,
   pub fn OSMesaCreateContextExt (format: c_uint, depthBits: c_int, stencilBits: c_int, accumBits: c_int, sharelist: OSMesaContext) -> OSMesaContext,
+  pub fn OSMesaCreateContextAttribs(attribList: *const c_int, sharelist: OSMesaContext) -> OSMesaContext,
   pub fn OSMesaDestroyContext (ctx: OSMesaContext),
   pub fn OSMesaGetColorBuffer (c: OSMesaContext, width: *mut c_int, height: *mut c_int, format: *mut c_int, buffer: *mut *mut c_void) -> c_uchar,
   pub fn OSMesaGetCurrentContext () -> OSMesaContext,
@@ -74,3 +75,13 @@ pub const OSMESA_MAX_HEIGHT: c_int = 0x0025;
 // OSMesaPixelStore
 pub const OSMESA_ROW_LENGTH: c_int = 0x0010;
 pub const OSMESA_Y_UP: c_int = 0x0011;
+
+// OSMesaCreateContextAttribs
+pub const OSMESA_DEPTH_BITS: c_int = 0x30;
+pub const OSMESA_STENCIL_BITS: c_int = 0x31;
+pub const OSMESA_ACCUM_BITS: c_int = 0x32;
+pub const OSMESA_PROFILE: c_int = 0x33;
+pub const OSMESA_CORE_PROFILE: c_int = 0x34;
+pub const OSMESA_COMPAT_PROFILE: c_int = 0x35;
+pub const OSMESA_CONTEXT_MAJOR_VERSION: c_int = 0x36;
+pub const OSMESA_CONTEXT_MINOR_VERSION: c_int = 0x37;
