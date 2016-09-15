@@ -20,8 +20,13 @@ use std::os::raw::{
 // functions
 //
 
+#[cfg(target_os="macos")]
+const LIB_NAME: &'static str = "libOSMesa.dylib";
 
-shared_library!(OsMesa, "libOSMesa.so",
+#[cfg(not(target_os="macos"))]
+const LIB_NAME: &'static str = "libOSMesa.so";
+
+shared_library!(OsMesa, LIB_NAME,
   pub fn OSMesaColorClamp (enable: c_uchar),
   pub fn OSMesaCreateContext (format: c_uint, sharelist: OSMesaContext) -> OSMesaContext,
   pub fn OSMesaCreateContextExt (format: c_uint, depthBits: c_int, stencilBits: c_int, accumBits: c_int, sharelist: OSMesaContext) -> OSMesaContext,
