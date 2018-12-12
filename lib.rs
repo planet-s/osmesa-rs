@@ -4,6 +4,10 @@
 
 #![allow(non_snake_case)]
 
+#[cfg(not(target_os = "redox"))]
+#[macro_use]
+extern crate shared_library;
+
 use std::os::raw::{
   c_char,
   c_int,
@@ -12,6 +16,33 @@ use std::os::raw::{
   c_void,
 };
 
+//
+// functions
+//
+
+#[cfg(target_os="macos")]
+const LIB_NAME: &'static str = "libOSMesa.dylib";
+
+#[cfg(not(any(target_os="macos", target_os = "redox")))]
+const LIB_NAME: &'static str = "libOSMesa.so";
+
+#[cfg(not(target_os = "redox"))]
+shared_library!(OsMesa, LIB_NAME,
+  pub fn OSMesaColorClamp (enable: c_uchar),
+  pub fn OSMesaCreateContext (format: c_uint, sharelist: OSMesaContext) -> OSMesaContext,
+  pub fn OSMesaCreateContextExt (format: c_uint, depthBits: c_int, stencilBits: c_int, accumBits: c_int, sharelist: OSMesaContext) -> OSMesaContext,
+  pub fn OSMesaCreateContextAttribs(attribList: *const c_int, sharelist: OSMesaContext) -> OSMesaContext,
+  pub fn OSMesaDestroyContext (ctx: OSMesaContext),
+  pub fn OSMesaGetColorBuffer (c: OSMesaContext, width: *mut c_int, height: *mut c_int, format: *mut c_int, buffer: *mut *mut c_void) -> c_uchar,
+  pub fn OSMesaGetCurrentContext () -> OSMesaContext,
+  pub fn OSMesaGetDepthBuffer (c: OSMesaContext, width: *mut c_int, height: *mut c_int, bytesPerValue: *mut c_int, buffer: *mut *mut c_void) -> c_uchar,
+  pub fn OSMesaGetIntegerv (pname: c_int, value: *mut c_int),
+  pub fn OSMesaGetProcAddress (funcName: *const c_char) -> OSMESAproc,
+  pub fn OSMesaMakeCurrent (ctx: OSMesaContext, buffer: *mut c_void, _type: c_uint, width: c_int, height: c_int) -> c_uchar,
+  pub fn OSMesaPixelStore (pname: c_int, value: c_int),
+);
+
+#[cfg(target_os = "redox")]
 extern "C" {
   pub fn OSMesaColorClamp (enable: c_uchar);
   pub fn OSMesaCreateContext (format: c_uint, sharelist: OSMesaContext) -> OSMesaContext;
